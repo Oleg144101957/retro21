@@ -5,6 +5,8 @@ import retrofit2.http.GET
 
 interface MainService {
 
+
+    //get random numbre
     @GET("/random/math")
     suspend fun getNumberDescription(): String
 
