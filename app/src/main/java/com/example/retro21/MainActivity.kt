@@ -16,10 +16,13 @@ class MainActivity : AppCompatActivity() {
 
         val mViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
+        mViewModel.liveNumberDescription.observe(this) {
+            binding.tvResult.text = it
+        }
+
         binding.btnStart.setOnClickListener {
             mViewModel.getNumberDescription()
-            binding.tvResult.text =
-                mViewModel.liveNumberDescription.value?.body()?.numberDescription ?: "no data"
         }
+
     }
 }

@@ -9,13 +9,12 @@ import retrofit2.Response
 
 class MainViewModel : ViewModel() {
 
-    val liveNumberDescription: MutableLiveData<Response<Model>> = MutableLiveData()
+    val liveNumberDescription: MutableLiveData<String> = MutableLiveData()
     val repo = Repository()
 
     fun getNumberDescription(){
         viewModelScope.launch(Dispatchers.IO) {
-            liveNumberDescription.value = repo.getNumberDescription()
+            liveNumberDescription.postValue(repo.getNumberDescription())
         }
     }
-
 }
